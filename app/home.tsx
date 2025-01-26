@@ -16,21 +16,21 @@ export default function Home() {
       name: "Juicyway",
       description:
         "I'm an art director, my experience includes in-house and agency teams with work ranging from marketing.",
-      images: ["/Juicyway-bg.png", "/Apple-1.jpg", "/Juicyway-bg.png"],
+      images: ["/Juicyway-1.png", "/Apple-1.jpg", "/Juicyway-1.png"],
       imageIndex: 0,
     },
     {
       name: "Apple",
       description:
         "I'm an art director, my experience includes in-house and agency teams with work ranging from marketing.",
-      images: ["/Juicyway-bg.png", "/Juicyway-bg.png", "/Juicyway-bg.png"],
+      images: ["/Juicyway-1.png", "/Juicyway-1.png", "/Juicyway-1.png"],
       imageIndex: 0,
     },
     {
       name: "Juicyway",
       description:
         "I'm an art director, my experience includes in-house and agency teams with work ranging from marketing.",
-      images: ["/Juicyway-bg.png", "/Juicyway-bg.png", "/Juicyway-bg.png"],
+      images: ["/Juicyway-1.png", "/Juicyway-1.png", "/Juicyway-1.png"],
       imageIndex: 0,
     },
   ]);
