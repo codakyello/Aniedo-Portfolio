@@ -8,32 +8,40 @@ import { BsPlusLg } from "react-icons/bs";
 import { HiOutlineMinus } from "react-icons/hi";
 import { useState } from "react";
 
+const selectedWorks = [
+  {
+    name: "Juicyway",
+    description:
+      "I'm an art director, my experience includes in-house and agency teams with work ranging from marketing.",
+    images: [
+      "/Juicyway-1.png",
+      "/Apple-1.jpg",
+      "/Juicyway-1.png",
+      "/Juicyway-1.png",
+      "/Juicyway-1.png",
+    ],
+    imageIndex: 0,
+  },
+  {
+    name: "Apple",
+    description:
+      "I'm an art director, my experience includes in-house and agency teams with work ranging from marketing.",
+    images: ["/Juicyway-1.png", "/Juicyway-1.png", "/Juicyway-1.png"],
+    imageIndex: 0,
+  },
+  {
+    name: "Juicyway",
+    description:
+      "I'm an art director, my experience includes in-house and agency teams with work ranging from marketing.",
+    images: ["/Juicyway-1.png", "/Juicyway-1.png", "/Juicyway-1.png"],
+    imageIndex: 0,
+  },
+];
+
 export default function Home() {
   const [isMuted, setIsMuted] = useState(false);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [works, setWorks] = useState(() => [
-    {
-      name: "Juicyway",
-      description:
-        "I'm an art director, my experience includes in-house and agency teams with work ranging from marketing.",
-      images: ["/Juicyway-1.png", "/Apple-1.jpg", "/Juicyway-1.png"],
-      imageIndex: 0,
-    },
-    {
-      name: "Apple",
-      description:
-        "I'm an art director, my experience includes in-house and agency teams with work ranging from marketing.",
-      images: ["/Juicyway-1.png", "/Juicyway-1.png", "/Juicyway-1.png"],
-      imageIndex: 0,
-    },
-    {
-      name: "Juicyway",
-      description:
-        "I'm an art director, my experience includes in-house and agency teams with work ranging from marketing.",
-      images: ["/Juicyway-1.png", "/Juicyway-1.png", "/Juicyway-1.png"],
-      imageIndex: 0,
-    },
-  ]);
+  const [works, setWorks] = useState(selectedWorks);
 
   return (
     <Box
