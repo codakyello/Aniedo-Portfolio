@@ -89,7 +89,7 @@ export default function Home() {
           className="cursor-pointer flex justify-between items-center"
         >
           <h2
-            className={`text-[9rem]  ${
+            className={`text-[8rem] sm:text-[10rem]  ${
               openIndex === 0 ? "text-white" : "text-[#909090E3]"
             } text-[#909090E3]`}
           >
@@ -131,13 +131,13 @@ export default function Home() {
           onClick={() => setOpenIndex((index) => (index === 1 ? null : 1))}
         >
           <h2
-            className={`text-[9rem]  leading-none ${
+            className={`text-[8rem] sm:text-[10rem]  leading-none ${
               openIndex === 1 ? "text-white" : "text-[#909090E3]"
             } text-[#909090E3]`}
           >
             Selected Work
           </h2>
-          <Box className="w-[10rem]">
+          <Box className="w-[10rem] flex items-end">
             {openIndex === 1 ? (
               <HiOutlineMinus className="cursor-pointer text-[#FFFDFD] text-[10rem]" />
             ) : (
@@ -189,7 +189,7 @@ export default function Home() {
           onClick={() => setOpenIndex((index) => (index === 2 ? null : 2))}
         >
           <h2
-            className={`text-[9rem]  ${
+            className={`text-[8rem] sm:text-[10rem]  ${
               openIndex === 2 ? "text-white" : "text-[#909090E3]"
             } text-[#909090E3]`}
           >
