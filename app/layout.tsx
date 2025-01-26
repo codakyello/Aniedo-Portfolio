@@ -19,7 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="lg:text-[58%] md:text-[56.25%] text-[50%]" lang="en">
+    <html
+      className="no-scrollbar lg:text-[58%] md:text-[56.25%] text-[50%]"
+      lang="en"
+    >
       <ChakraProvider>
         <body className={`${lato.className}  antialiased`}>{children}</body>
       </ChakraProvider>
