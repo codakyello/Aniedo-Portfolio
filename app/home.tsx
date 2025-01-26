@@ -67,12 +67,19 @@ export default function Home() {
             className="cursor-pointer border border-solid flex items-center justify-center border-[#fff] h-20 w-20 rounded-full p-[1rem]"
             onClick={() => {
               setIsMuted((prev) => !prev);
+              const muteSound = new Audio(
+                "sound/sound-charging-on-the-iphone-less-than-10.mp3"
+              );
+              const unmuteSound = new Audio(
+                "sound/the-sound-of-setting-the-iphone-to-charge-connection.mp3"
+              );
+
               if (isMuted) {
                 // play sound
-                const audio = new Audio(
-                  "/sound/new-message-sound-in-app-on-iphone.mp3"
-                );
-                audio.play();
+                unmuteSound.play();
+              } else {
+                muteSound.play();
+                // stop sound
               }
             }}
           >
@@ -85,7 +92,22 @@ export default function Home() {
         </Box>
 
         <Box
-          onClick={() => setOpenIndex((index) => (index === 0 ? null : 0))}
+          onClick={() => {
+            // open about sound
+            const openSound = new Audio(
+              "/sound/CAMERA-VINTAGE_GEN-HDF-06196.wav"
+            );
+            const closeSound = new Audio(
+              "/sound/iphone-screen-lock-shutdown-sound.mp3"
+            );
+
+            if (openIndex === 0 && !isMuted) {
+              closeSound.play();
+            } else if (openIndex !== 0 && !isMuted) {
+              openSound.play();
+            }
+            setOpenIndex((index) => (index === 0 ? null : 0));
+          }}
           className="cursor-pointer flex justify-between items-center"
         >
           <h2
@@ -128,7 +150,21 @@ export default function Home() {
 
         <Box
           className="flex mb-[2rem] justify-between items-center cursor-pointer"
-          onClick={() => setOpenIndex((index) => (index === 1 ? null : 1))}
+          onClick={() => {
+            const openSound = new Audio(
+              "/sound/applepay-payment-sound-appstore-confirmation.mp3"
+            );
+
+            const closeSound = new Audio("/sound/selected-work-close.mp3");
+
+            if (openIndex === 1 && !isMuted) {
+              closeSound.play();
+            } else if (openIndex !== 1 && !isMuted) {
+              openSound.play();
+            }
+
+            setOpenIndex((index) => (index === 1 ? null : 1));
+          }}
         >
           <h2
             className={`text-[8rem] sm:text-[10rem]  leading-none ${
@@ -186,7 +222,20 @@ export default function Home() {
 
         <Box
           className="flex justify-between items-center cursor-pointer"
-          onClick={() => setOpenIndex((index) => (index === 2 ? null : 2))}
+          onClick={() => {
+            const openSound = new Audio("/sound/longdial.wav");
+            const closeSound = new Audio(
+              "/sound/new-message-sound-in-app-on-iphone.mp3"
+            );
+
+            if (openIndex === 2 && !isMuted) {
+              closeSound.play();
+            } else if (openIndex !== 2 && !isMuted) {
+              openSound.play();
+            }
+
+            setOpenIndex((index) => (index === 2 ? null : 2));
+          }}
         >
           <h2
             className={`text-[8rem] sm:text-[10rem]  ${
@@ -210,13 +259,28 @@ export default function Home() {
           }`}
         >
           <Box className="flex flex-col leading-[67.2px] text-[#FFFDFD] mb-[3.2rem] text-[5.6rem]">
-            <a className="underline" href="#">
+            <a
+              className="underline"
+              href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Email
             </a>
-            <a className="underline" href="#">
+            <a
+              className="underline"
+              href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               LinkedIn
             </a>
-            <a className="underline" href="#">
+            <a
+              className="underline"
+              href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Instagram
             </a>
           </Box>
