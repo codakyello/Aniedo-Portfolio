@@ -110,7 +110,7 @@ export default function Home() {
             at Pentagram and 2x4. I studied architecture
             at Yale and Princeton and make architectural images and objects.
           </p>
-          <p className="text-[#FFFDFD] text-[3.2rem] leading-[4.8rem]">
+          <p className="text-[#FFFDFD] mb-[8rem] text-[3.2rem] leading-[4.8rem]">
             Please reach out for opportunities, collaborations, or additional
             work sample requests.
           </p>
@@ -146,7 +146,7 @@ export default function Home() {
                 {work.description}
               </p>
               <img
-                className="w-[100rem] h-auto"
+                className="w-[100rem] h-auto cursor-pointer"
                 onClick={() =>
                   setWorks((works) =>
                     works.map((work, i) =>
