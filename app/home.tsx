@@ -95,7 +95,7 @@ export default function Home() {
         </Box>
 
         <Box
-          className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
+          className={`transition-max-height duration-500 mb-[2rem] ease-in-out overflow-hidden ${
             openIndex === 0 ? "max-h-[1000px]" : "max-h-0"
           }`}
         >
