@@ -45,7 +45,7 @@ export default function Home() {
 
   return (
     <Box
-      className="min-h-screen  p-[4rem] bg-cover bg-[#020202] bg-no-repeat bg-top"
+      className="min-h-screen py-[6.4rem] px-[4rem] bg-cover bg-[#020202] bg-no-repeat bg-top"
       backgroundImage={
         openIndex === null
           ? "linear-gradient(#000000de, #000000d0), url('/juicyway-bg.png')"
