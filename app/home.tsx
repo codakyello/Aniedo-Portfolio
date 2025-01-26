@@ -96,7 +96,7 @@ export default function Home() {
 
         <Box
           className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
-            openIndex === 0 ? "max-h-auto" : "max-h-0"
+            openIndex === 0 ? "max-h-[1000px]" : "max-h-0"
           }`}
         >
           <p className="text-[#FFFDFD] text-[3.2rem] leading-[4.8rem] mb-[3.2rem]">
@@ -136,7 +136,7 @@ export default function Home() {
 
         <Box
           className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
-            openIndex === 1 ? "max-h-auto" : "max-h-0"
+            openIndex === 1 ? "max-h-[10000px]" : "max-h-0"
           }`}
         >
           {works.map((work, index) => (
@@ -192,7 +192,7 @@ export default function Home() {
 
         <Box
           className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
-            openIndex === 2 ? "max-h-auto" : "max-h-0"
+            openIndex === 2 ? "max-h-[2000px]" : "max-h-0"
           }`}
         >
           <Box className="flex flex-col leading-[67.2px] text-[#FFFDFD] mb-[3.2rem] text-[5.6rem]">
