@@ -89,17 +89,19 @@ export default function Home() {
           className="cursor-pointer flex justify-between items-center"
         >
           <h2
-            className={`text-[11rem] ${
+            className={`text-[9rem]  ${
               openIndex === 0 ? "text-white" : "text-[#909090E3]"
             } text-[#909090E3]`}
           >
             About
           </h2>
-          {openIndex === 0 ? (
-            <HiOutlineMinus className="text-[#FFFDFD] text-[10rem] cursor-pointer" />
-          ) : (
-            <BsPlusLg className="text-[#FFFDFD] text-[10rem] cursor-pointer" />
-          )}
+          <Box className="w-[10rem]">
+            {openIndex === 0 ? (
+              <HiOutlineMinus className="text-[#FFFDFD] text-[10rem] cursor-pointer" />
+            ) : (
+              <BsPlusLg className="text-[#FFFDFD] text-[10rem] cursor-pointer" />
+            )}
+          </Box>
         </Box>
 
         <Box
@@ -129,17 +131,19 @@ export default function Home() {
           onClick={() => setOpenIndex((index) => (index === 1 ? null : 1))}
         >
           <h2
-            className={`text-[11rem] leading-none ${
+            className={`text-[9rem]  leading-none ${
               openIndex === 1 ? "text-white" : "text-[#909090E3]"
             } text-[#909090E3]`}
           >
             Selected Work
           </h2>
-          {openIndex === 1 ? (
-            <HiOutlineMinus className="cursor-pointer text-[#FFFDFD] text-[10rem]" />
-          ) : (
-            <BsPlusLg className="cursor-pointer text-[#FFFDFD] text-[10rem]" />
-          )}
+          <Box className="w-[10rem]">
+            {openIndex === 1 ? (
+              <HiOutlineMinus className="cursor-pointer text-[#FFFDFD] text-[10rem]" />
+            ) : (
+              <BsPlusLg className="cursor-pointer text-[#FFFDFD] text-[10rem]" />
+            )}
+          </Box>
         </Box>
 
         <Box
@@ -185,17 +189,19 @@ export default function Home() {
           onClick={() => setOpenIndex((index) => (index === 2 ? null : 2))}
         >
           <h2
-            className={`text-[11rem] ${
+            className={`text-[9rem]  ${
               openIndex === 2 ? "text-white" : "text-[#909090E3]"
             } text-[#909090E3]`}
           >
             Contact
           </h2>
-          {openIndex === 2 ? (
-            <HiOutlineMinus className="text-[#FFFDFD] text-[10rem]" />
-          ) : (
-            <BsPlusLg className="text-[#FFFDFD] text-[10rem]" />
-          )}
+          <Box className="w-[10rem]">
+            {openIndex === 2 ? (
+              <HiOutlineMinus className="text-[#FFFDFD] text-[10rem]" />
+            ) : (
+              <BsPlusLg className="text-[#FFFDFD] text-[10rem]" />
+            )}
+          </Box>
         </Box>
 
         <Box
