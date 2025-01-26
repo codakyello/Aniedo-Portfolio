@@ -154,7 +154,7 @@ export default function Home() {
           {works.map((work, index) => (
             <Box key={index} className="mb-[8rem]">
               <h3 className="text-[5.6rem] mb-[2.4rem]">{work.name}</h3>
-              <p className="text-[5.6rem] w-[80rem] leading-[7.2rem] text-[#808080] mb-[5.6rem]">
+              <p className="text-[5.6rem] max-w-[80rem] leading-[7.2rem] text-[#808080] mb-[5.6rem]">
                 {work.description}
               </p>
               <img
