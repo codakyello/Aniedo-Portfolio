@@ -6,7 +6,7 @@ import { FaVolumeHigh } from "react-icons/fa6";
 import { FaVolumeMute } from "react-icons/fa";
 import { BsPlusLg } from "react-icons/bs";
 import { HiOutlineMinus } from "react-icons/hi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const selectedWorks = [
   {
@@ -42,12 +42,29 @@ export default function Home() {
   const [isMuted, setIsMuted] = useState(false);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [works, setWorks] = useState(selectedWorks);
+  const [applyBackground, setApplyBackground] = useState(false);
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    if (openIndex === null) {
+      // Delay applying the background image by 1 second
+      timer = setTimeout(() => {
+        setApplyBackground(true);
+      }, 500);
+    } else {
+      // Remove the background image immediately
+      setApplyBackground(false);
+    }
+
+    return () => clearTimeout(timer); // Cleanup the timeout on component unmount or state change
+  }, [openIndex]);
 
   return (
     <Box
       className="min-h-screen py-[6.4rem] px-[4rem] bg-cover bg-[#020202] bg-no-repeat bg-top"
       backgroundImage={
-        openIndex === null
+        applyBackground
           ? "linear-gradient(#000000de, #000000d0), url('/juicyway-bg.png')"
           : ""
       }
@@ -108,7 +125,7 @@ export default function Home() {
             }
             setOpenIndex((index) => (index === 0 ? null : 0));
           }}
-          className="cursor-pointer flex justify-between items-center"
+          className="cursor-pointer flex justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors"
         >
           <h2
             className={`text-[8rem] sm:text-[10rem]  ${
@@ -127,7 +144,7 @@ export default function Home() {
         </Box>
 
         <Box
-          className={`transition-max-height duration-500 mb-[2rem] ease-in-out overflow-hidden ${
+          className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
             openIndex === 0 ? "max-h-[1000px]" : "max-h-0"
           }`}
         >
@@ -149,7 +166,7 @@ export default function Home() {
         </Box>
 
         <Box
-          className="flex mb-[2rem] justify-between items-center cursor-pointer"
+          className="cursor-pointer py-[2.5rem] flex justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors"
           onClick={() => {
             const openSound = new Audio(
               "/sound/applepay-payment-sound-appstore-confirmation.mp3"
@@ -190,7 +207,7 @@ export default function Home() {
           {works.map((work, index) => (
             <Box key={index} className="mb-[8rem]">
               <h3 className="text-[5.6rem] mb-[2.4rem]">{work.name}</h3>
-              <p className="text-[5.6rem] max-w-[80rem] leading-[7.2rem] text-[#808080] mb-[5.6rem]">
+              <p className="text-[5rem] max-w-[80rem] leading-[7.2rem] text-[#808080] mb-[5.6rem]">
                 {work.description}
               </p>
               <img
@@ -221,7 +238,7 @@ export default function Home() {
         </Box>
 
         <Box
-          className="flex justify-between items-center cursor-pointer"
+          className="cursor-pointer flex justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors"
           onClick={() => {
             const openSound = new Audio("/sound/longdial.wav");
             const closeSound = new Audio(
