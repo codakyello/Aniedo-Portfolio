@@ -108,198 +108,206 @@ export default function Home() {
           </Box>
         </Box>
 
-        <Box
-          onClick={() => {
-            // open about sound
-            const openSound = new Audio(
-              "/sound/CAMERA-VINTAGE_GEN-HDF-06196.wav"
-            );
-            const closeSound = new Audio(
-              "/sound/iphone-screen-lock-shutdown-sound.mp3"
-            );
+        <Box className="cursor-pointer justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
+          <Box
+            onClick={() => {
+              // open about sound
+              const openSound = new Audio(
+                "/sound/CAMERA-VINTAGE_GEN-HDF-06196.wav"
+              );
+              const closeSound = new Audio(
+                "/sound/iphone-screen-lock-shutdown-sound.mp3"
+              );
 
-            if (openIndex === 0 && !isMuted) {
-              closeSound.play();
-            } else if (openIndex !== 0 && !isMuted) {
-              openSound.play();
-            }
-            setOpenIndex((index) => (index === 0 ? null : 0));
-          }}
-          className="cursor-pointer flex justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors"
-        >
-          <h2
-            className={`text-[8rem] sm:text-[10rem]  ${
-              openIndex === 0 ? "text-white" : "text-[#909090E3]"
-            } text-[#909090E3]`}
+              if (openIndex === 0 && !isMuted) {
+                closeSound.play();
+              } else if (openIndex !== 0 && !isMuted) {
+                openSound.play();
+              }
+              setOpenIndex((index) => (index === 0 ? null : 0));
+            }}
+            className="cursor-pointer flex justify-between items-center"
           >
-            About
-          </h2>
-          <Box className="w-[10rem]">
-            {openIndex === 0 ? (
-              <HiOutlineMinus className="text-[#FFFDFD] text-[10rem] cursor-pointer" />
-            ) : (
-              <BsPlusLg className="text-[#FFFDFD] text-[10rem] cursor-pointer" />
-            )}
-          </Box>
-        </Box>
-
-        <Box
-          className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
-            openIndex === 0 ? "max-h-[1000px]" : "max-h-0"
-          }`}
-        >
-          <p className="text-[#FFFDFD] text-[3.2rem] leading-[4.8rem] mb-[3.2rem]">
-            I&apos;m an art director and multidisciplinary designer currently
-            based in San Francisco. My experience includes in-house and agency
-            teams with work ranging from marketing, visual, brand, editorial,
-            and environmental design.
-          </p>
-          <p className="text-[#FFFDFD] text-[3.2rem] leading-[4.8rem] mb-[3.2rem]">
-            Previously I have worked at Apple, Google, IDEO, Figma, and interned
-            at Pentagram and 2x4. I studied architecture
-            at Yale and Princeton and make architectural images and objects.
-          </p>
-          <p className="text-[#FFFDFD] mb-[8rem] text-[3.2rem] leading-[4.8rem]">
-            Please reach out for opportunities, collaborations, or additional
-            work sample requests.
-          </p>
-        </Box>
-
-        <Box
-          className="cursor-pointer py-[2.5rem] flex justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors"
-          onClick={() => {
-            const openSound = new Audio(
-              "/sound/applepay-payment-sound-appstore-confirmation.mp3"
-            );
-
-            const closeSound = new Audio("/sound/selected-work-close.mp3");
-
-            if (openIndex === 1 && !isMuted) {
-              closeSound.play();
-            } else if (openIndex !== 1 && !isMuted) {
-              openSound.play();
-            }
-
-            setOpenIndex((index) => (index === 1 ? null : 1));
-          }}
-        >
-          <h2
-            className={`text-[8rem] sm:text-[10rem]  leading-none ${
-              openIndex === 1 ? "text-white" : "text-[#909090E3]"
-            } text-[#909090E3]`}
-          >
-            Selected Work
-          </h2>
-          <Box className="w-[10rem] flex items-end">
-            {openIndex === 1 ? (
-              <HiOutlineMinus className="cursor-pointer text-[#FFFDFD] text-[10rem]" />
-            ) : (
-              <BsPlusLg className="cursor-pointer text-[#FFFDFD] text-[10rem]" />
-            )}
-          </Box>
-        </Box>
-
-        <Box
-          className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
-            openIndex === 1 ? "max-h-[10000px]" : "max-h-0"
-          }`}
-        >
-          {works.map((work, index) => (
-            <Box key={index} className="mb-[8rem]">
-              <h3 className="text-[5.6rem] mb-[2.4rem]">{work.name}</h3>
-              <p className="text-[5rem] max-w-[80rem] leading-[7.2rem] text-[#808080] mb-[5.6rem]">
-                {work.description}
-              </p>
-              <img
-                className="w-[100rem] h-auto cursor-pointer"
-                onClick={() =>
-                  setWorks((works) =>
-                    works.map((work, i) =>
-                      i === index
-                        ? {
-                            ...work,
-                            imageIndex:
-                              work.imageIndex + 1 === work.images.length
-                                ? 0
-                                : work.imageIndex + 1,
-                          }
-                        : work
-                    )
-                  )
-                }
-                alt="juicyway"
-                src={work.images[work.imageIndex]}
-              />
-              <p className="text-[#808080] mt-[2.4rem] text-[5.6rem]">
-                {work.imageIndex + 1}/{work.images.length}
-              </p>
+            <h2
+              className={`text-[8rem] sm:text-[10rem]  ${
+                openIndex === 0 ? "text-white" : "text-[#909090E3]"
+              } text-[#909090E3]`}
+            >
+              About
+            </h2>
+            <Box
+              className={`text-[8rem] w-[10rem] sm:text-[10rem]  ${
+                openIndex === 0 ? "text-white" : "text-[#909090E3]"
+              } text-[#909090E3]`}
+            >
+              {openIndex === 0 ? <HiOutlineMinus /> : <BsPlusLg />}
             </Box>
-          ))}
-        </Box>
+          </Box>
 
-        <Box
-          className="cursor-pointer flex justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors"
-          onClick={() => {
-            const openSound = new Audio("/sound/longdial.wav");
-            const closeSound = new Audio(
-              "/sound/new-message-sound-in-app-on-iphone.mp3"
-            );
-
-            if (openIndex === 2 && !isMuted) {
-              closeSound.play();
-            } else if (openIndex !== 2 && !isMuted) {
-              openSound.play();
-            }
-
-            setOpenIndex((index) => (index === 2 ? null : 2));
-          }}
-        >
-          <h2
-            className={`text-[8rem] sm:text-[10rem]  ${
-              openIndex === 2 ? "text-white" : "text-[#909090E3]"
-            } text-[#909090E3]`}
+          <Box
+            className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
+              openIndex === 0 ? "max-h-[1000px]" : "max-h-0"
+            }`}
           >
-            Contact
-          </h2>
-          <Box className="w-[10rem]">
-            {openIndex === 2 ? (
-              <HiOutlineMinus className="text-[#FFFDFD] text-[10rem]" />
-            ) : (
-              <BsPlusLg className="text-[#FFFDFD] text-[10rem]" />
-            )}
+            <p className="text-[#FFFDFD] text-[3.2rem] leading-[4.8rem] mt-[2rem] mb-[3.2rem]">
+              I&apos;m a photographer and multidisciplinary creative currently
+              based in Lagos, Nigeria. My experience includes in-house and
+              freelancing, with projects ranging from photography and
+              videography to video editing, color grading, and stop-motion
+              animation.
+            </p>
+            <p className="text-[#FFFDFD] text-[3.2rem] leading-[4.8rem] mb-[3.2rem]">
+              Previously, I’ve worked with Lagos Meet, Juicyway, The Huddle, DHK
+              Designs, and more.
+            </p>
+            <p className="text-[#FFFDFD] mb-[8rem] text-[3.2rem] leading-[4.8rem]">
+              Feel free to reach out for opportunities, collaborations, or
+              requests for additional work samples.
+            </p>
           </Box>
         </Box>
 
-        <Box
-          className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
-            openIndex === 2 ? "max-h-[2000px]" : "max-h-0"
-          }`}
-        >
-          <Box className="flex flex-col leading-[67.2px] text-[#FFFDFD] mb-[3.2rem] text-[5.6rem]">
-            <a
-              className="underline"
-              href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
-              target="_blank"
-              rel="noopener noreferrer"
+        <Box className="cursor-pointer py-[2.8rem] justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
+          <Box
+            className="flex justify-between"
+            onClick={() => {
+              const openSound = new Audio(
+                "/sound/applepay-payment-sound-appstore-confirmation.mp3"
+              );
+
+              const closeSound = new Audio("/sound/selected-work-close.mp3");
+
+              if (openIndex === 1 && !isMuted) {
+                closeSound.play();
+              } else if (openIndex !== 1 && !isMuted) {
+                openSound.play();
+              }
+
+              setOpenIndex((index) => (index === 1 ? null : 1));
+            }}
+          >
+            <h2
+              className={`text-[8rem] sm:text-[10rem]  leading-none ${
+                openIndex === 1 ? "text-white" : "text-[#909090E3]"
+              } text-[#909090E3]`}
             >
-              Email
-            </a>
-            <a
-              className="underline"
-              href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
-              target="_blank"
-              rel="noopener noreferrer"
+              Selected Work
+            </h2>
+            <Box
+              className={`text-[8rem] w-[10rem] sm:text-[10rem]  ${
+                openIndex === 1 ? "text-white" : "text-[#909090E3]"
+              } text-[#909090E3]`}
             >
-              LinkedIn
-            </a>
-            <a
-              className="underline"
-              href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
-              target="_blank"
-              rel="noopener noreferrer"
+              {openIndex === 1 ? <HiOutlineMinus /> : <BsPlusLg />}
+            </Box>
+          </Box>
+
+          <Box
+            className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
+              openIndex === 1 ? "max-h-[10000px]" : "max-h-0"
+            }`}
+          >
+            {works.map((work, index) => (
+              <Box key={index} className="mb-[8rem]">
+                <h3 className="text-[5.6rem] mt-[2rem] mb-[2.4rem]">
+                  {work.name}
+                </h3>
+                <p className="text-[5rem] max-w-[80rem] leading-[7.2rem] text-[#808080] mb-[5.6rem]">
+                  {work.description}
+                </p>
+                <img
+                  className="w-[100rem] h-auto cursor-pointer"
+                  onClick={() =>
+                    setWorks((works) =>
+                      works.map((work, i) =>
+                        i === index
+                          ? {
+                              ...work,
+                              imageIndex:
+                                work.imageIndex + 1 === work.images.length
+                                  ? 0
+                                  : work.imageIndex + 1,
+                            }
+                          : work
+                      )
+                    )
+                  }
+                  alt="juicyway"
+                  src={work.images[work.imageIndex]}
+                />
+                <p className="text-[#808080] mt-[2.4rem] text-[5.6rem]">
+                  {work.imageIndex + 1}/{work.images.length}
+                </p>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
+        <Box className="cursor-pointer justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
+          <Box
+            className="flex justify-between items-center"
+            onClick={() => {
+              const openSound = new Audio("/sound/longdial.wav");
+              const closeSound = new Audio(
+                "/sound/new-message-sound-in-app-on-iphone.mp3"
+              );
+
+              if (openIndex === 2 && !isMuted) {
+                closeSound.play();
+              } else if (openIndex !== 2 && !isMuted) {
+                openSound.play();
+              }
+
+              setOpenIndex((index) => (index === 2 ? null : 2));
+            }}
+          >
+            <h2
+              className={`text-[8rem] sm:text-[10rem]  ${
+                openIndex === 2 ? "text-white" : "text-[#909090E3]"
+              } text-[#909090E3]`}
             >
-              Instagram
-            </a>
+              Contact
+            </h2>
+            <Box
+              className={`text-[8rem] w-[10rem] sm:text-[10rem]  ${
+                openIndex === 2 ? "text-white" : "text-[#909090E3]"
+              } text-[#909090E3]`}
+            >
+              {openIndex === 2 ? <HiOutlineMinus /> : <BsPlusLg />}
+            </Box>
+          </Box>
+
+          <Box
+            className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
+              openIndex === 2 ? "max-h-[2000px]" : "max-h-0"
+            }`}
+          >
+            <Box className="flex flex-col leading-[67.2px] text-[#FFFDFD] mb-[3.2rem] text-[5.6rem]">
+              <a
+                className="underline"
+                href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Email
+              </a>
+              <a
+                className="underline"
+                href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+              <a
+                className="underline"
+                href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram
+              </a>
+            </Box>
           </Box>
         </Box>
       </Box>
