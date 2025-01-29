@@ -108,7 +108,7 @@ export default function Home() {
           </Box>
         </Box>
 
-        <Box className="cursor-pointer justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
+        <Box className="cursor-pointer py-[2.8rem] justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
           <Box
             onClick={() => {
               // open about sound
@@ -243,7 +243,7 @@ export default function Home() {
           </Box>
         </Box>
 
-        <Box className="cursor-pointer justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
+        <Box className="cursor-pointer py-[2.8rem] justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
           <Box
             className="flex justify-between items-center"
             onClick={() => {
@@ -282,7 +282,7 @@ export default function Home() {
               openIndex === 2 ? "max-h-[2000px]" : "max-h-0"
             }`}
           >
-            <Box className="flex flex-col leading-[67.2px] text-[#FFFDFD] mb-[3.2rem] text-[5.6rem]">
+            <Box className="flex flex-col mt-[2rem] leading-[67.2px] text-[#FFFDFD] mb-[3.2rem] text-[5.6rem]">
               <a
                 className="underline"
                 href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
