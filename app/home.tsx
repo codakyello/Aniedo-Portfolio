@@ -11,29 +11,37 @@ import { useEffect, useState } from "react";
 const selectedWorks = [
   {
     name: "Juicyway",
-    description:
-      "I'm an art director, my experience includes in-house and agency teams with work ranging from marketing.",
+    description: "Photography for the public launch of the Juicyway website.",
     images: [
       "/juicyway-bg.png",
-      "/Apple-1.jpg",
-      "/juicyway-bg.png",
-      "/juicyway-bg.png",
-      "/juicyway-bg.png",
+      "/MacBook Pro 14_ - 4.png",
+      "/MacBook Pro 14_ - 5.png",
+      "/MacBook Pro 14_ - 3.png",
+      "/MacBook Pro 14_ - 7.png",
+      "/MacBook Pro 14_ - 8.png",
+      "/MacBook Pro 14_ - 6.png",
     ],
     imageIndex: 0,
   },
   {
-    name: "Apple",
-    description:
-      "I'm an art director, my experience includes in-house and agency teams with work ranging from marketing.",
-    images: ["/juicyway-bg.png", "/juicyway-bg.png", "/juicyway-bg.png"],
+    name: "Hingees",
+    description: "Art direction and Photography for Hingees ",
+    images: [
+      "/MacBook Pro 14_ - 9.png",
+      "/MacBook Pro 14_ - 14.png",
+      "/MacBook Pro 14_ - 15.png",
+    ],
     imageIndex: 0,
   },
   {
-    name: "Juicyway",
+    name: "Caveat Emptor",
     description:
-      "I'm an art director, my experience includes in-house and agency teams with work ranging from marketing.",
-    images: ["/juicyway-bg.png", "/juicyway-bg.png", "/juicyway-bg.png"],
+      "Photographed, colour-graded, and collaborated with David Udoh for Caveat Emptor’s debut exhibition.",
+    images: [
+      "/MacBook Pro 14_ - 19.png",
+      "/MacBook Pro 14_ - 22.png",
+      "/MacBook Pro 14_ - 24.png",
+    ],
     imageIndex: 0,
   },
 ];
@@ -81,7 +89,9 @@ export default function Home() {
           </Box>
 
           <Box
-            className="cursor-pointer border border-solid flex items-center justify-center border-[#fff] h-20 w-20 rounded-full p-[1rem]"
+            className={`cursor-pointer border border-solid flex items-center justify-center ${
+              isMuted ? "border-[#909090E3]" : "border-[#fff]"
+            } h-20 w-20 rounded-full p-[1rem]`}
             onClick={() => {
               setIsMuted((prev) => !prev);
               const muteSound = new Audio(
@@ -101,7 +111,7 @@ export default function Home() {
             }}
           >
             {isMuted ? (
-              <FaVolumeMute className="text-white text-[2.2rem]" />
+              <FaVolumeMute className="text-[#909090E3] text-[2.2rem]" />
             ) : (
               <FaVolumeHigh className="text-white text-[2.2rem]" />
             )}
@@ -129,14 +139,14 @@ export default function Home() {
             className="cursor-pointer flex justify-between items-center"
           >
             <h2
-              className={`text-[8rem] sm:text-[10rem]  ${
+              className={`text-[10rem] sm:text-[12rem]  ${
                 openIndex === 0 ? "text-white" : "text-[#909090E3]"
               } text-[#909090E3]`}
             >
               About
             </h2>
             <Box
-              className={`text-[8rem] w-[10rem] sm:text-[10rem]  ${
+              className={`text-[8rem] w-[10rem] sm:text-[10rem] flex  items-center justify-end ${
                 openIndex === 0 ? "text-white" : "text-[#909090E3]"
               } text-[#909090E3]`}
             >
@@ -167,7 +177,7 @@ export default function Home() {
           </Box>
         </Box>
 
-        <Box className="cursor-pointer py-[2.8rem] justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
+        <Box className=" cursor-pointer py-[2.8rem]  border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
           <Box
             className="flex justify-between"
             onClick={() => {
@@ -187,14 +197,14 @@ export default function Home() {
             }}
           >
             <h2
-              className={`text-[8rem] sm:text-[10rem]  leading-none ${
+              className={`text-[10rem] sm:text-[12rem]  leading-none ${
                 openIndex === 1 ? "text-white" : "text-[#909090E3]"
               } text-[#909090E3]`}
             >
               Selected Work
             </h2>
             <Box
-              className={`text-[8rem] w-[10rem] sm:text-[10rem]  ${
+              className={`text-[8rem] w-[10rem] sm:text-[10rem] flex items-center  ${
                 openIndex === 1 ? "text-white" : "text-[#909090E3]"
               } text-[#909090E3]`}
             >
@@ -212,7 +222,7 @@ export default function Home() {
                 <h3 className="text-[5.6rem] mt-[2rem] mb-[2.4rem]">
                   {work.name}
                 </h3>
-                <p className="text-[5rem] max-w-[80rem] leading-[7.2rem] text-[#808080] mb-[5.6rem]">
+                <p className="text-[5rem] max-w-[80rem] leading-[6rem] text-[#808080] mb-[5.6rem]">
                   {work.description}
                 </p>
                 <img
@@ -233,7 +243,7 @@ export default function Home() {
                     )
                   }
                   alt="juicyway"
-                  src={work.images[work.imageIndex]}
+                  src={`/img/${work.images[work.imageIndex]}`}
                 />
                 <p className="text-[#808080] mt-[2.4rem] text-[5.6rem]">
                   {work.imageIndex + 1}/{work.images.length}
@@ -262,14 +272,14 @@ export default function Home() {
             }}
           >
             <h2
-              className={`text-[8rem] sm:text-[10rem]  ${
+              className={`text-[10rem] sm:text-[12rem]  ${
                 openIndex === 2 ? "text-white" : "text-[#909090E3]"
               } text-[#909090E3]`}
             >
               Contact
             </h2>
             <Box
-              className={`text-[8rem] w-[10rem] sm:text-[10rem]  ${
+              className={`text-[8rem] w-[10rem] sm:text-[10rem] flex justify-end items-center  ${
                 openIndex === 2 ? "text-white" : "text-[#909090E3]"
               } text-[#909090E3]`}
             >
