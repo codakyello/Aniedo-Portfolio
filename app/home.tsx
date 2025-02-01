@@ -168,7 +168,7 @@ export default function Home() {
               openIndex === 0 ? "max-h-[1000px]" : "max-h-0"
             }`}
           >
-            <p className="text-[#FFFDFD] text-[3.2rem] leading-[4.8rem] mt-[2rem] mb-[3.2rem]">
+            <p className="text-[#FFFDFD] text-[3.2rem] leading-[4.8rem] mt-[3.2rem] mb-[3.2rem]">
               I&apos;m a photographer and multidisciplinary creative currently
               based in Lagos, Nigeria. My experience includes in-house and
               freelancing, with projects ranging from photography and
