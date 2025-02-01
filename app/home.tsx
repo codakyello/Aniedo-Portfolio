@@ -77,12 +77,21 @@ export default function Home() {
     return () => clearTimeout(timer); // Cleanup the timeout on component unmount or state change
   }, [openIndex]);
 
+  useEffect(() => {
+    document.body.style.cursor = "url('/img/cursor.png'), auto";
+
+    return () => {
+      document.body.style.cursor = "default"; // Reset on unmount
+    };
+  }, []);
+
   return (
     <Box
+      style={{ cursor: "url('/img/cursor.png'), auto" }}
       className="min-h-screen py-[6.4rem] px-[4rem] bg-cover bg-[#020202] bg-no-repeat bg-top"
       backgroundImage={
         applyBackground
-          ? "linear-gradient(#000000de, #000000d0), url('/juicyway-bg.png')"
+          ? "linear-gradient(#000000de, #000000d0), url('/img/juicyway-bg.png')"
           : ""
       }
     >
@@ -168,7 +177,7 @@ export default function Home() {
               openIndex === 0 ? "max-h-[1000px]" : "max-h-0"
             }`}
           >
-            <p className="text-[#FFFDFD] text-[3.2rem] leading-[4.8rem] mt-[3.2rem] mb-[3.2rem]">
+            <p className="text-[#FFFDFD] text-[3.2rem] leading-[4.8rem] mt-[3.5rem] mb-[3.2rem]">
               I&apos;m a photographer and multidisciplinary creative currently
               based in Lagos, Nigeria. My experience includes in-house and
               freelancing, with projects ranging from photography and
@@ -227,8 +236,8 @@ export default function Home() {
             }`}
           >
             {works.map((work, index) => (
-              <Box key={index} className="mb-[8rem]">
-                <h3 className="text-[5.6rem] mt-[2rem] mb-[2.4rem]">
+              <Box key={index} className="mb-[15rem]">
+                <h3 className="text-[5.6rem] mt-[5rem] mb-[2.4rem]">
                   {work.name}
                 </h3>
                 <p className="text-[5rem] max-w-[80rem] leading-[6rem] text-[#808080] mb-[5.6rem]">

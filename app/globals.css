@@ -14,6 +14,13 @@
   }
 }
 
+html {
+  cursor: pointer;
+}
+body {
+  cursor: pointer;
+}
+
 *,
 *::before,
 *::after {
