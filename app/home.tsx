@@ -53,6 +53,15 @@ export default function Home() {
   const [applyBackground, setApplyBackground] = useState(false);
 
   useEffect(() => {
+    selectedWorks.forEach((work) => {
+      work.images.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
+    });
+  }, []);
+
+  useEffect(() => {
     let timer: NodeJS.Timeout;
 
     if (openIndex === null) {
