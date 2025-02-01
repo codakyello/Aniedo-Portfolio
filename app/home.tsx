@@ -13,13 +13,13 @@ const selectedWorks = [
     name: "Juicyway",
     description: "Photography for the public launch of the Juicyway website.",
     images: [
-      "/juicyway-bg.png",
-      "/MacBook Pro 14_ - 4.png",
-      "/MacBook Pro 14_ - 5.png",
-      "/MacBook Pro 14_ - 3.png",
-      "/MacBook Pro 14_ - 7.png",
-      "/MacBook Pro 14_ - 8.png",
-      "/MacBook Pro 14_ - 6.png",
+      "/img/juicyway-bg.png",
+      "/img/MacBook Pro 14_ - 4.png",
+      "/img/MacBook Pro 14_ - 5.png",
+      "/img/MacBook Pro 14_ - 3.png",
+      "/img/MacBook Pro 14_ - 7.png",
+      "/img/MacBook Pro 14_ - 8.png",
+      "/img/MacBook Pro 14_ - 6.png",
     ],
     imageIndex: 0,
   },
@@ -27,9 +27,9 @@ const selectedWorks = [
     name: "Hingees",
     description: "Art direction and Photography for Hingees ",
     images: [
-      "/MacBook Pro 14_ - 9.png",
-      "/MacBook Pro 14_ - 14.png",
-      "/MacBook Pro 14_ - 15.png",
+      "/img/MacBook Pro 14_ - 9.png",
+      "/img/MacBook Pro 14_ - 14.png",
+      "/img/MacBook Pro 14_ - 15.png",
     ],
     imageIndex: 0,
   },
@@ -38,9 +38,9 @@ const selectedWorks = [
     description:
       "Photographed, colour-graded, and collaborated with David Udoh for Caveat Emptor’s debut exhibition.",
     images: [
-      "/MacBook Pro 14_ - 19.png",
-      "/MacBook Pro 14_ - 22.png",
-      "/MacBook Pro 14_ - 24.png",
+      "/img/MacBook Pro 14_ - 19.png",
+      "/img/MacBook Pro 14_ - 22.png",
+      "/img/MacBook Pro 14_ - 24.png",
     ],
     imageIndex: 0,
   },
@@ -252,7 +252,7 @@ export default function Home() {
                     )
                   }
                   alt="juicyway"
-                  src={`/img/${work.images[work.imageIndex]}`}
+                  src={work.images[work.imageIndex]}
                 />
                 <p className="text-[#808080] mt-[2.4rem] text-[5.6rem]">
                   {work.imageIndex + 1}/{work.images.length}
