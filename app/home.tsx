@@ -7,6 +7,7 @@ import { FaVolumeMute } from "react-icons/fa";
 import { BsPlusLg } from "react-icons/bs";
 import { HiOutlineMinus } from "react-icons/hi";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const selectedWorks = [
   {
@@ -77,13 +78,13 @@ export default function Home() {
     return () => clearTimeout(timer); // Cleanup the timeout on component unmount or state change
   }, [openIndex]);
 
-  useEffect(() => {
-    document.body.style.cursor = "url('/img/cursor.png'), auto";
+  // useEffect(() => {
+  //   document.body.style.cursor = "url('/img/cursor.png'), auto";
 
-    return () => {
-      document.body.style.cursor = "default"; // Reset on unmount
-    };
-  }, []);
+  //   return () => {
+  //     document.body.style.cursor = "default"; // Reset on unmount
+  //   };
+  // }, []);
 
   return (
     <Box
@@ -107,7 +108,7 @@ export default function Home() {
           </Box>
 
           <Box
-            className={`cursor-pointer border border-solid flex items-center justify-center ${
+            className={`border border-solid flex items-center justify-center ${
               isMuted ? "border-[#909090E3]" : "border-[#fff]"
             } h-20 w-20 rounded-full p-[1rem]`}
             onClick={() => {
@@ -129,15 +130,22 @@ export default function Home() {
             }}
           >
             {isMuted ? (
-              <FaVolumeMute className="text-[#909090E3] text-[2.2rem]" />
+              <FaVolumeMute
+                style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
+                className="text-[#909090E3] text-[2.2rem]"
+              />
             ) : (
-              <FaVolumeHigh className="text-white text-[2.2rem]" />
+              <FaVolumeHigh
+                style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
+                className="text-white text-[2.2rem]"
+              />
             )}
           </Box>
         </Box>
 
-        <Box className="cursor-pointer py-[2.8rem] justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
+        <Box className="py-[2.8rem] justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
           <Box
+            style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
             onClick={() => {
               // open about sound
               const openSound = new Audio(
@@ -154,7 +162,7 @@ export default function Home() {
               }
               setOpenIndex((index) => (index === 0 ? null : 0));
             }}
-            className="cursor-pointer flex justify-between items-center"
+            className="flex justify-between items-center"
           >
             <h2
               className={`text-[10rem] sm:text-[12rem]  ${
@@ -195,8 +203,9 @@ export default function Home() {
           </Box>
         </Box>
 
-        <Box className=" cursor-pointer py-[2.8rem]  border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
+        <Box className="py-[2.8rem]  border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
           <Box
+            style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
             className="flex justify-between"
             onClick={() => {
               const openSound = new Audio(
@@ -244,7 +253,8 @@ export default function Home() {
                   {work.description}
                 </p>
                 <img
-                  className="w-[100rem] h-auto cursor-pointer"
+                  style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
+                  className="w-[100rem] h-auto"
                   onClick={() =>
                     setWorks((works) =>
                       works.map((work, i) =>
@@ -271,8 +281,9 @@ export default function Home() {
           </Box>
         </Box>
 
-        <Box className="cursor-pointer py-[2.8rem] justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
+        <Box className=" py-[2.8rem] justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
           <Box
+            style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
             className="flex justify-between items-center"
             onClick={() => {
               const openSound = new Audio("/sound/longdial.wav");
@@ -301,7 +312,15 @@ export default function Home() {
                 openIndex === 2 ? "text-white" : "text-[#909090E3]"
               } text-[#909090E3]`}
             >
-              {openIndex === 2 ? <HiOutlineMinus /> : <BsPlusLg />}
+              {openIndex === 2 ? (
+                <HiOutlineMinus
+                  style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
+                />
+              ) : (
+                <BsPlusLg
+                  style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
+                />
+              )}
             </Box>
           </Box>
 
@@ -311,30 +330,33 @@ export default function Home() {
             }`}
           >
             <Box className="flex flex-col mt-[2rem] leading-[67.2px] text-[#FFFDFD] mb-[3.2rem] text-[5.6rem]">
-              <a
+              <Link
+                style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
                 className="underline"
                 href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Email
-              </a>
-              <a
+              </Link>
+              <Link
+                style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
                 className="underline"
                 href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 LinkedIn
-              </a>
-              <a
+              </Link>
+              <Link
+                style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
                 className="underline"
                 href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Instagram
-              </a>
+              </Link>
             </Box>
           </Box>
         </Box>
