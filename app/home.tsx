@@ -13,7 +13,7 @@ const selectedWorks = [
   {
     name: "Juicyway",
     description: "Photography for the public launch of the Juicyway website.",
-    images: [
+    media: [
       "/img/juicyway-bg.png",
       "/img/MacBook Pro 14_ - 4.png",
       "/img/MacBook Pro 14_ - 5.png",
@@ -27,10 +27,11 @@ const selectedWorks = [
   {
     name: "Hingees",
     description: "Art direction and Photography for Hingees ",
-    images: [
+    media: [
       "/img/MacBook Pro 14_ - 9.png",
       "/img/MacBook Pro 14_ - 14.png",
       "/img/MacBook Pro 14_ - 15.png",
+      "/img/MacBook Pro 14_ - 12.png",
     ],
     imageIndex: 0,
   },
@@ -38,10 +39,12 @@ const selectedWorks = [
     name: "Caveat Emptor",
     description:
       "Photographed, colour-graded, and collaborated with David Udoh for Caveat Emptor’s debut exhibition.",
-    images: [
+    media: [
+      "/media/caveat_emptor--1.mp4",
       "/img/MacBook Pro 14_ - 19.png",
       "/img/MacBook Pro 14_ - 22.png",
       "/img/MacBook Pro 14_ - 24.png",
+      "/media/caveat_emptor--2.mp4",
     ],
     imageIndex: 0,
   },
@@ -52,10 +55,11 @@ export default function Home() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [works, setWorks] = useState(selectedWorks);
   const [applyBackground, setApplyBackground] = useState(false);
+  const [cursor, setCursor] = useState("url('/img/cursor-right.png'), auto");
 
   useEffect(() => {
     selectedWorks.forEach((work) => {
-      work.images.forEach((src) => {
+      work.media.forEach((src) => {
         const img = new Image();
         img.src = src;
       });
@@ -78,13 +82,19 @@ export default function Home() {
     return () => clearTimeout(timer); // Cleanup the timeout on component unmount or state change
   }, [openIndex]);
 
-  // useEffect(() => {
-  //   document.body.style.cursor = "url('/img/cursor.png'), auto";
+  const handleMouseMove = (
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>
+  ) => {
+    const img = e.currentTarget;
+    const midPoint = img.offsetWidth / 2;
+    const mouseX = e.nativeEvent.offsetX;
 
-  //   return () => {
-  //     document.body.style.cursor = "default"; // Reset on unmount
-  //   };
-  // }, []);
+    setCursor(
+      mouseX > midPoint
+        ? "url('/img/cursor-right.png'), auto"
+        : "url('/img/cursor-left.png'), auto"
+    );
+  };
 
   return (
     <Box
@@ -131,12 +141,12 @@ export default function Home() {
           >
             {isMuted ? (
               <FaVolumeMute
-                style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
+                style={{ cursor: "url('/img/cursor-down.png'), auto" }}
                 className="text-[#909090E3] text-[2.2rem]"
               />
             ) : (
               <FaVolumeHigh
-                style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
+                style={{ cursor: "url('/img/cursor-down.png'), auto" }}
                 className="text-white text-[2.2rem]"
               />
             )}
@@ -145,7 +155,12 @@ export default function Home() {
 
         <Box className="py-[2.8rem] justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
           <Box
-            style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
+            style={{
+              cursor:
+                openIndex !== 0
+                  ? "url('/img/cursor-down.png'), auto"
+                  : "url('/img/cursor-up.png'), auto",
+            }}
             onClick={() => {
               // open about sound
               const openSound = new Audio(
@@ -205,7 +220,12 @@ export default function Home() {
 
         <Box className="py-[2.8rem]  border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
           <Box
-            style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
+            style={{
+              cursor:
+                openIndex !== 1
+                  ? "url('/img/cursor-down.png'), auto"
+                  : "url('/img/cursor-up.png'), auto",
+            }}
             className="flex justify-between"
             onClick={() => {
               const openSound = new Audio(
@@ -252,29 +272,51 @@ export default function Home() {
                 <p className="text-[5rem] max-w-[80rem] leading-[6rem] text-[#808080] mb-[5.6rem]">
                   {work.description}
                 </p>
-                <img
-                  style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
-                  className="w-[100rem] h-auto"
-                  onClick={() =>
+                <Box
+                  onMouseMove={handleMouseMove}
+                  style={{ cursor }}
+                  onClick={(e) => {
+                    const img = e.currentTarget;
+                    const midPoint = img.offsetWidth / 2;
+                    const mouseX = e.nativeEvent.offsetX;
+
                     setWorks((works) =>
                       works.map((work, i) =>
                         i === index
                           ? {
                               ...work,
                               imageIndex:
-                                work.imageIndex + 1 === work.images.length
-                                  ? 0
-                                  : work.imageIndex + 1,
+                                mouseX > midPoint
+                                  ? (work.imageIndex + 1) % work.media.length
+                                  : work.imageIndex === 0
+                                  ? work.media.length - 1
+                                  : work.imageIndex - 1,
                             }
                           : work
                       )
-                    )
-                  }
-                  alt="juicyway"
-                  src={work.images[work.imageIndex]}
-                />
+                    );
+                  }}
+                >
+                  {work.media[work.imageIndex].endsWith(".mp4") ? (
+                    <video
+                      className="w-[100rem] h-auto"
+                      src={work.media[work.imageIndex]}
+                      autoPlay
+                      loop
+                      muted
+                    />
+                  ) : (
+                    <img
+                      onMouseMove={handleMouseMove}
+                      className="w-[100rem] h-auto"
+                      alt="juicyway"
+                      src={work.media[work.imageIndex]}
+                    />
+                  )}
+                </Box>
+
                 <p className="text-[#808080] mt-[2.4rem] text-[5.6rem]">
-                  {work.imageIndex + 1}/{work.images.length}
+                  {work.imageIndex + 1}/{work.media.length}
                 </p>
               </Box>
             ))}
@@ -283,7 +325,12 @@ export default function Home() {
 
         <Box className=" py-[2.8rem] justify-between items-center border-y-[1px] border-transparent hover:border-[#ffffff2f] transition-colors">
           <Box
-            style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
+            style={{
+              cursor:
+                openIndex !== 2
+                  ? "url('/img/cursor-down.png'), auto"
+                  : "url('/img/cursor-up.png'), auto",
+            }}
             className="flex justify-between items-center"
             onClick={() => {
               const openSound = new Audio("/sound/longdial.wav");
@@ -314,11 +361,11 @@ export default function Home() {
             >
               {openIndex === 2 ? (
                 <HiOutlineMinus
-                  style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
+                  style={{ cursor: "url('/img/cursor-down.png'), auto" }}
                 />
               ) : (
                 <BsPlusLg
-                  style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
+                  style={{ cursor: "url('/img/cursor-down.png'), auto" }}
                 />
               )}
             </Box>
@@ -331,7 +378,7 @@ export default function Home() {
           >
             <Box className="flex flex-col mt-[2rem] leading-[67.2px] text-[#FFFDFD] mb-[3.2rem] text-[5.6rem]">
               <Link
-                style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
+                style={{ cursor: "url('/img/cursor-down.png'), auto" }}
                 className="underline"
                 href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
                 target="_blank"
@@ -340,7 +387,7 @@ export default function Home() {
                 Email
               </Link>
               <Link
-                style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
+                style={{ cursor: "url('/img/cursor-down.png'), auto" }}
                 className="underline"
                 href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
                 target="_blank"
@@ -349,7 +396,7 @@ export default function Home() {
                 LinkedIn
               </Link>
               <Link
-                style={{ cursor: "url('/img/cursor-pointer.png'), auto" }}
+                style={{ cursor: "url('/img/cursor-down.png'), auto" }}
                 className="underline"
                 href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
                 target="_blank"
