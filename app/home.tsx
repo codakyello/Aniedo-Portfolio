@@ -287,8 +287,10 @@ export default function Home() {
                               ...work,
                               imageIndex:
                                 mouseX > midPoint
-                                  ? (work.imageIndex + 1) % work.media.length
-                                  : work.imageIndex === 0
+                                  ? work.imageIndex === work.media.length - 1
+                                    ? 0
+                                    : work.imageIndex + 1
+                                  : work.imageIndex < 1
                                   ? work.media.length - 1
                                   : work.imageIndex - 1,
                             }
