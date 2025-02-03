@@ -273,7 +273,7 @@ export default function Home() {
                   {work.description}
                 </p>
                 <Box
-                  onMouseMove={handleMouseMove}
+                  // onMouseMove={handleMouseMove}
                   style={{ cursor }}
                   onClick={(e) => {
                     const img = e.currentTarget;
