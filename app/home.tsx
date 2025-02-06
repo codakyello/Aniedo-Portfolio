@@ -196,7 +196,7 @@ export default function Home() {
           </Box>
 
           <Box
-            className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
+            className={`transition-all duration-500 ease-in-out overflow-hidden ${
               openIndex === 0 ? "max-h-[1000px]" : "max-h-0"
             }`}
           >
@@ -260,7 +260,7 @@ export default function Home() {
           </Box>
 
           <Box
-            className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
+            className={`transition-all duration-500 ease-in-out overflow-hidden ${
               openIndex === 1 ? "max-h-[10000px]" : "max-h-0"
             }`}
           >
@@ -374,31 +374,28 @@ export default function Home() {
           </Box>
 
           <Box
-            className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
+            className={`transition-all duration-500 ease-in-out overflow-hidden ${
               openIndex === 2 ? "max-h-[2000px]" : "max-h-0"
             }`}
           >
             <Box className="flex flex-col mt-[2rem] leading-[67.2px] text-[#FFFDFD] mb-[3.2rem] text-[5.6rem]">
               <Link
-                style={{ cursor: "url('/img/cursor-down.png'), auto" }}
                 className="underline"
-                href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
+                href="mailto:theaniedorichard@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Email
               </Link>
               <Link
-                style={{ cursor: "url('/img/cursor-down.png'), auto" }}
                 className="underline"
-                href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
+                href="http://www.linkedin.com/in/aniedo-richard-4b601834b"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 LinkedIn
               </Link>
               <Link
-                style={{ cursor: "url('/img/cursor-down.png'), auto" }}
                 className="underline"
                 href="https://www.instagram.com/aniedorichard?igsh=MTl1a2poMmR1MXhtNw%3D%3D&utm_source=qr"
                 target="_blank"
